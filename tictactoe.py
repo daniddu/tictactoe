@@ -1,24 +1,43 @@
+from random import *
+
 def player_move(board, mark, position):
     # Returns the game board with the given mark in the given position.
-    my_board = board
-    print(my_board)
-    my_position = position
-    print(my_position)
-    my_mark = mark
-    print(my_mark)
-
-    if 0 <= my_position <= 20:
-        if my_board[my_position] == "-":
-            my_board = my_board[5].replace("-", my_mark)
-            print(my_board)
-        else:
-            print("sorry occupied")
-
-    else:
-        print("no valid value")
-
+    board = board
+    position = position
+    mark = mark
     
+    if board[position] == "-":
+        if 0 <= position <= 20:
+            board = board[0:(position - 1)] + mark + board[(position + 1):20]
+            return(board)
+        else:
+            print("no valid value")
+    else:
+        print("sorry occupied")
+       
+
+def pc_move(board):
+    board = board
+    print(board)
+    position = randrange(0,19)
+    print(position)
+    mark = "o"
+    if board[position] == "-":
+        if 0 <= position <= 20:
+            board = board[0:(position - 1)] + mark + board[(position + 1):20]
+            return(board)
+        else:
+            print("no valid value")
+    else:
+        print("sorry occupied")
+
+
+
 board = "-"*20
 position = int(input("enter position for you mark: "))
 mark = input("enter mark: ")
-player_move(board, mark, position)
+
+board = player_move(board, mark, position)
+print(board)
+board = pc_move(board)
+print(board)
