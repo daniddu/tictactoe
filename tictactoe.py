@@ -2,7 +2,6 @@ from random import *
 
 
 def evaluate(board):
-
     if "xxx" in board:
         return("x")
     elif "ooo" in board:
