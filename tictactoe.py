@@ -3,17 +3,17 @@ from random import *
 
 def evaluate(board):
     if "xxx" in board:
-        return("x")
+        return "x"
     elif "ooo" in board:
-        return("o")
+        return "o"
     elif not "-" in board:
-        return("!")
+        return "!"
     else:
-        return("-")
+        return "-"
 
 def move(board, mark, position):
     board = board[0:(position)] + mark + board[(position + 1):20]  
-    return(board)
+    return board 
 
 def player_move(board):
     while True:
@@ -26,7 +26,7 @@ def player_move(board):
                 print("too small")    
             elif board[position] == "-":
                 board = move(board, mark, position) 
-                return(board)
+                return board
             elif board[position] != "-":
                 print("occupied")
         except ValueError:
@@ -38,7 +38,7 @@ def pc_move(board):
         position = randrange(0,19)
         if board[position] == "-":
             board = move(board, mark, position)
-            return(board)
+            return board 
 
 def oneD_tictactoe(board):
     while True:
